@@ -34,16 +34,17 @@
                  <div class="form-group row">
                   <label class="control-label col-md-3">barang</label>
                   <div class="col-md-8">
-                    <select class="form-control" name="id_barang">
-
-                      <option value="">choice</option>
+                    <select class="form-control" name="id_barang" id="id_barang">
+                      <optgroup label="Select barang">
+                      <option value=""></option>
                       
                       <?php foreach ($barang as $key => $value ) {?>
                        
                       
-                       <option value=" <?php echo $value['id_barang'];?>"> <?php echo $value['nama_barang'];?></option>
+                       <option value=" <?php echo $value['id_barang'];?>"><?php echo $value['nama_barang'];?>  - <?php echo $value['deskripsi_barang'];?></option>
 
                        <?php };?>
+                       </optgroup>
                     </select>
                     <small><?php echo form_error('id_barang'); ?></small>
                   </div>
@@ -52,7 +53,7 @@
                    <div class="form-group row">
                 <label class="control-label col-md-3">jumlah barang</label>
                   <div class="col-md-2">
-                    <input class="form-control" type="number" name="jumlah_pengajuan" id="jumlah_pengajuan" value="<?php echo set_value('jumlah_pengajuan')?>" placeholder="Enter full name">
+                    <input class="form-control" type="number" min="1" name="jumlah_pengajuan" id="jumlah_pengajuan" value="<?php echo set_value('jumlah_pengajuan')?>" placeholder="0">
                     <small><?php echo form_error('jumlah_pengajuan'); ?></small>
                   </div>
                 </div>
@@ -62,7 +63,7 @@
               <div class="row">
                 <div class="col-md-8 col-md-offset-3">
                   <div class="text-center">
-                  <button class="btn btn-primary" type="submit" ><i class="fa fa-fw fa-lg fa-check-circle"></i>Register</button>
+                  <button class="btn btn-primary" type="submit" ><i class="fa fa-fw fa-lg fa-check-circle"></i>Save</button>
                   </div>
                 </div>
               </div>
@@ -76,3 +77,7 @@
         </div>
       </div>
     </main>
+<script type="text/javascript" src="<?php echo base_url()?>assets/js/plugins/select2.min.js"></script>
+<script type="text/javascript">
+   $('#id_barang').select2();
+</script>

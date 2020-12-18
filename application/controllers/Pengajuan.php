@@ -109,9 +109,11 @@ public function insert(){
         {
                 show_404();
         }
+        $barang=$this->Barang_m->listAll();
         $news_item = $this->Pengajuan_m->getId($id);
        // $news_item=json_encode($x,);
-        $data = array( 'isi'=>'page/pengajuan/update',        				 
+        $data = array( 'isi'=>'page/pengajuan/update', 
+                        'barang'=>$barang,       				 
       					'news_item'=>$news_item);
            $this->load->view('setup/conect',$data);
 

@@ -78,7 +78,7 @@
                   <div class="col-md-2">
                     <select class="form-control" name="status_barang">
 
-                      <option value="">choice</option>
+                      <option value="">-</option>
                       
                      
                        
@@ -95,7 +95,7 @@
                   <div class="col-md-2">
                     <select class="form-control" name="garansi">
 
-                      <option value="">choice</option>
+                      <option value="">-</option>
                       
                      
                        
@@ -109,11 +109,11 @@
                 </div>
 
                 <div class="form-group row">
-                  <label class="control-label col-md-3">Devisi</label>
+                  <label class="control-label col-md-3">Kategori</label>
                   <div class="col-md-4">
                     <select class="form-control" name="id_kategori">
 
-                      <option value="">choice</option>
+                      <option value="">-</option>
                       
                       <?php foreach ($kategori as $key => $value ) {?>
                        
@@ -129,7 +129,7 @@
               <div class="row">
                 <div class="col-md-8 col-md-offset-3">
                   <div class="text-center">
-                  <button class="btn btn-primary" type="submit" ><i class="fa fa-fw fa-lg fa-check-circle"></i>Register</button>
+                  <button class="btn btn-primary" type="submit" ><i class="fa fa-fw fa-lg fa-check-circle"></i>Save</button>
                   </div>
                 </div>
               </div>

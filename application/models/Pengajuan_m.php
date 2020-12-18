@@ -10,7 +10,9 @@ public function __construct(){
 
 	//insert data to database
 	public function insert()
-	{		
+	{	
+
+		$kode = time();	
 		$uprove='';
 		   $date = date('Y-m-d');
 		$data = array(
@@ -20,6 +22,7 @@ public function __construct(){
 						'jumlah_pengajuan' 			=> $this->input->post('jumlah_pengajuan',true),						
 						'tanggal_pengajuan' 		=> $date,
 						'status_pengajuan'			=>$uprove,
+						'kode_pengajuan'			=>$kode,
 						'id_user'        			=> $this->session->userdata('id_user')
 						
 						
@@ -39,6 +42,7 @@ public function __construct(){
 		
 		$this->db->select('*');
 		$this->db->from('tb_pengajuan');
+		$this->db->join('tb_devisi','tb_pengajuan.id_user=tb_devisi.id_devisi');
 		$this->db->join('tb_pegawai','tb_pengajuan.id_user=tb_pegawai.id_user');
 		$this->db->join('tb_barang','tb_pengajuan.id_barang=tb_barang.id_barang');
 		$this->db->order_by("tb_pengajuan.id_pengajuan", "asc");
@@ -55,7 +59,7 @@ public function __construct(){
 		$this->db->from('tb_pengajuan');
 		$this->db->join('tb_pegawai','tb_pengajuan.id_user=tb_pegawai.id_user');
 		$this->db->join('tb_barang','tb_pengajuan.id_barang=tb_barang.id_barang');
-		$this->db->order_by("tb_pengajuan.id_pengajuan", "asc");
+		$this->db->order_by("tb_pengajuan.id_pengajuan", "DESC");
 		$query=$this->db->get();
 		return $query->result_array();
 	}

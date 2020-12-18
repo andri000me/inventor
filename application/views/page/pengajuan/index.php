@@ -22,7 +22,7 @@
           <div class="tile">
 
          <div class="text-right">
-              <a href="<?php base_url()?>pengajuan/insert" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>add</a>
+             
             <?php echo $success;?>
             
             </div>
@@ -40,8 +40,9 @@
               <thead>
                 <tr>
                   <th>no</th>
-                 
+                  
                   <th>nama barang</th>
+                  <th>devisi</th>
                   <th>jumlah</th>
                  
                   <th>tanggal pengajuan</th>
@@ -59,12 +60,13 @@
 
                 <tr>
                       <td><?php echo $no++?></td>
-                     
+                   
                       <td><?php echo $value['nama_barang'];?></td>
+                       <td><?php echo $value['nama_devisi'];?></td>
                       <td><?php echo $value['jumlah_pengajuan'];?></td>
                  
                       <td><?php echo $value['tanggal_pengajuan'];?></td>
-                      <td class="text-danger"><?php echo $value['status_pengajuan']?'<span class="badge badge-pill badge-success">selesai</span>':'<span class="badge badge-pill badge-warning">proses</span>   <a href="./pengajuan/get_id/'.$value['id_pengajuan'].'" >update</a>  ';?>&nbsp; &nbsp;<small><?php echo $value['catatan'];?></small></td>
+                      <td class="text-danger"><?php echo $value['status_pengajuan']?'<span class="badge badge-pill badge-success">selesai </span> ':'<span class="badge badge-pill badge-warning">proses</span>   <a href="./pengajuan/get_id/'.$value['id_pengajuan'].'" >update</a>  ';?>&nbsp; &nbsp;<small><?php echo $value['catatan'];?></small></td>
                  
                       <td>
                        
@@ -111,7 +113,7 @@
           <div class="tile">
 
          <div class="text-right">
-              <a href="<?php base_url()?>pengajuan/insert" class="btn btn-info"><i class="fa fa-plus" aria-hidden="true"></i>add</a>
+              <a href="<?php base_url()?>pengajuan/insert" class="btn btn-info btn-sm"><i class="fa fa-plus" aria-hidden="true"></i>add</a>
             <?php echo $success;?>
             
             </div>
@@ -129,7 +131,7 @@
               <thead>
                 <tr>
                   <th>no</th>
-                 
+                 <th>kode</th>
                   <th>nama barang</th>
                   <th>jumlah</th>
                  
@@ -148,12 +150,13 @@
 
                 <tr>
                       <td><?php echo $no++?></td>
-                     
+                       <td><?php echo $value['kode_pengajuan'];?></td>
                       <td><?php echo $value['nama_barang'];?></td>
                       <td><?php echo $value['jumlah_pengajuan'];?></td>
                  
                       <td><?php echo $value['tanggal_pengajuan'];?></td>
-                      <td class="text-danger"><?php echo $value['status_pengajuan']?'<span class="badge badge-pill badge-success">selesai</span>':'<span class="badge badge-pill badge-warning">proses</span>   <a href="./pengajuan/getid/'.$value['id_pengajuan'].'" >update</a>  ';?>&nbsp; &nbsp;<small><?php echo $value['catatan'];?></small></td>
+                      <td class="text-danger"><?php echo $value['status_pengajuan']?'<span class="badge badge-pill badge-success">selesai</span> ':'<span class="badge badge-pill badge-warning">proses</span>   <a href="./pengajuan/getid/'.$value['id_pengajuan'].'" ><i class="fa fa-link" aria-hidden="true"></i>
+update</a>  ';?>&nbsp; &nbsp;<small><?php echo $value['catatan'];?></small></td>
                  
                       
                       

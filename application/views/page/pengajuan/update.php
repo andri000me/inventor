@@ -34,7 +34,7 @@
                  <div class="form-group row">
                   <label class="control-label col-md-3">barang</label>
                   <div class="col-md-8">
-                    <select class="form-control" name="id_barang">
+                    <select class="form-control" name="id_barang" id="id_barang">
 
                       <option value="<?php echo $news_item['id_barang']?>"><?php echo $news_item['nama_barang']?></option>
                       
@@ -76,3 +76,7 @@
         </div>
       </div>
     </main>
+<script type="text/javascript" src="<?php echo base_url()?>assets/js/plugins/select2.min.js"></script>
+<script type="text/javascript">
+   $('#id_barang').select2();
+</script>
