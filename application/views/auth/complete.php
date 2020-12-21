@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Main CSS-->
      <link href="<?php echo base_url()?>assets/img/favicon.png" rel="icon">
   <link href="<?php echo base_url()?>assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/back/css/main.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>assets/css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>complate - Document Code</title>
@@ -42,6 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="form-group">
             <label class="control-label">PASSWORD</label>
             <input class="form-control" type="password" name="password" placeholder="Password" required >
+            
           </div>
           <div class="form-group">
             <label class="control-label">REPEAT PASSWORD</label>
@@ -70,12 +71,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </section>
     <!-- Essential javascripts for application to work-->
-    <script src="<?php echo base_url()?>assets/back/js/jquery-3.2.1.min.js"></script>
-    <script src="<?php echo base_url()?>assets/back/js/popper.min.js"></script>
-    <script src="<?php echo base_url()?>assets/back/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url()?>assets/back/js/main.js"></script>
+    <script src="<?php echo base_url()?>assets/js/jquery-3.2.1.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/popper.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/main.js"></script>
     <!-- The javascript plugin to display page loading on top-->
-    <script src="<?php echo base_url()?>assets/back/js/plugins/pace.min.js"></script>
+    <script src="<?php echo base_url()?>assets/js/plugins/pace.min.js"></script>
     
   </body>
 </html>

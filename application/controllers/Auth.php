@@ -167,34 +167,25 @@ class Auth extends CI_Controller {
            
             if ($this->form_validation->run() == FALSE) {  
                  
-                $this->load->view('backand/auth/complete', $data);
+                $this->load->view('auth/complete', $data);
                  
             }else{
                
-                $this->load->library('password');                
-                $post = $this->input->post(NULL, TRUE);
-               
-                $cleanPost = $this->security->xss_clean($post);
-               
-                $hashed = $this->password->create_hash($cleanPost['password']);                
-                $cleanPost['password'] = $hashed;
-                unset($cleanPost['passconf']);
-                $userInfo = $this->user_model->updateUserInfo($cleanPost);
-               
-                if(!$userInfo){
-                    $this->session->set_flashdata('flash_message', 'There was a problem updating your record');
-                    redirect(site_url().'masuk');
-                }
-               
-                unset($userInfo->password);
-               
-                foreach($userInfo as $key=>$val){
-                    $this->session->set_userdata($key, $val);
-                }
-                redirect(site_url().'auth/');
+              
+            $password = $this->input->post('password');
+            $pass = password_hash($password, PASSWORD_DEFAULT);
+            $post = [                
+                'password' => $pass,
+                'id_user'=>$user_info->id_user,
+            ];
+           // $insert = $this->Users_m->register("users", $data);
+             $insert = $this->user_model->updateUserInfo($post);
+            if($insert){
+                echo '<script>alert("Sukses! Anda berhasil melakukan register. Silahkan login untuk mengakses data.");window.location.href="'.base_url('index.php/auth/login').'";</script>';
                
             }
         }
+    }
        
         public function login()
         {
@@ -215,19 +206,38 @@ class Auth extends CI_Controller {
                 
             }else{
                
-                $post = $this->input->post();  
-                $clean = $this->security->xss_clean($post);
-               
-                $userInfo = $this->user_model->checkLogin($clean);
-               
-                if(!$userInfo){
-                    $this->session->set_flashdata('flash_message', 'The login was unsucessful');
-                    redirect(site_url().'masuk');
-                }                
-                foreach($userInfo as $key=>$val){
+                    $email = $this->input->post('email');
+            $pass = htmlspecialchars($this->input->post('password'));
+
+            // CEK KE DATABASE BERDASARKAN EMAIL
+            $cek_login = $this->user_model->checkLogin($email); 
+                
+            if($cek_login == FALSE)
+            {
+                 $this->session->set_flashdata('flash_message', 'We cant find your email address');
+                redirect(site_url().'masuk');
+            
+            } else {
+            
+                if(password_verify($pass, $cek_login->password)){
+                    
+                      foreach($cek_login as $key=>$val){
                     $this->session->set_userdata($key, $val);
                 }
-                redirect(site_url().'dasbord/');
+                    
+                   $data  = array('x' => 'Presensi Dosen',
+                           
+                           'isi'=>'page/home' );
+ 
+   
+      
+           $this->load->view('setup/conect',$data);
+                        
+                } else {
+                     $this->session->set_flashdata('flash_message', 'someting wrong, check mail or password');
+                    redirect(site_url().'masuk');
+                }
+            }
             }
            
         }
@@ -268,7 +278,7 @@ class Auth extends CI_Controller {
                
                 $token = $this->user_model->insertToken($userInfo->id_user);                        
                 $qstring = $this->base64url_encode($token);                  
-                $url = site_url() . 'reset_password/token/' . $qstring;
+                $url = site_url() . 'auth/reset_password/token/' . $qstring;
                 $link = '<a href="' . $url . '">' . $url . '</a>';
                
                 $message = '<!doctype html>
@@ -347,7 +357,7 @@ class Auth extends CI_Controller {
            
         }
        
-        public function reset_password()
+         public function reset_password()
         {
             $token = $this->base64url_decode($this->uri->segment(4));                  
             $cleanToken = $this->security->xss_clean($token);
@@ -375,8 +385,8 @@ class Auth extends CI_Controller {
                 
             }else{
                                
-                $this->load->library('password');                
-                $post = $this->input->post(NULL, TRUE);                
+               // $this->load->library('password');                
+                /*$post = $this->input->post(NULL, TRUE);                
                 $cleanPost = $this->security->xss_clean($post);                
                 $hashed = $this->password->create_hash($cleanPost['password']);                
                 $cleanPost['password'] = $hashed;
@@ -387,7 +397,24 @@ class Auth extends CI_Controller {
                 }else{
                     $this->session->set_flashdata('flash_message', 'Your password has been updated');
                 }
-                redirect(site_url().'masuk');                
+                redirect(site_url().'masuk');  */ 
+                 $password = $this->input->post('password');
+            $pass = password_hash($password, PASSWORD_DEFAULT);
+            $cleanPost = [                
+                'password' => $pass,
+                'id_user'=>$user_info->id_user,
+            ];
+           // $insert = $this->Users_m->register("users", $data);
+             $insert = $this->user_model->updatePassword($cleanPost);
+            if($insert){
+                $this->session->set_flashdata('flash_message', 'welcome');
+                redirect(site_url().'masuk');
+               
+            }
+
+
+
+
             }
         }
        

@@ -108,17 +108,14 @@ class Users_m extends CI_Model {
         return $user_info;
     }
    
-    public function checkLogin($post)
+    public function checkLogin($email)
     {
-        $this->load->library('password');      
-        $this->db->select('*');
-        $this->db->where('email', $post['email']);
-        $query = $this->db->get('tb_pegawai');
-        $userInfo = $query->row();
-       
-        if(!$this->password->validate_password($post['password'], $userInfo->password)){
-            error_log('Unsuccessful login attempt('.$post['email'].')');
-            return false;
+        //$this->load->library('password');      
+        $hasil = $this->db->where('email', $email)->limit(1)->get('tb_pegawai');
+        if($hasil->num_rows() > 0){
+            return $hasil->row();
+        } else {
+            return array();
         }
        
         $this->updateLoginTime($userInfo->id_user);
