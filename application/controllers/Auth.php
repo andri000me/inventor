@@ -66,6 +66,7 @@ class Auth extends CI_Controller {
                     $link = '<a href="' . $url . '">' . $url . '</a>';
  
                     $message = '
+                   
                     <div class="container" style="text-align:center">
 
 
@@ -78,7 +79,16 @@ class Auth extends CI_Controller {
                     <h5 class="card-title">Special title treatment</h5>
                     <p class="card-text">untuk melanjutkan proses pendaftaran silahkan klik.</p>
                     <hr>
-                    <a href='.$url.' class="btn btn-warning" target="_blank">NEXT</a>
+                    <a href='.$url.' style=" background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;" target="_blank">NEXT</a>
                     <hr>
                     </div>
                     &nbsp;
@@ -268,6 +278,20 @@ class Auth extends CI_Controller {
                 $link = '<a href="' . $url . '">' . $url . '</a>';
                
                 $message = '
+                    style
+                    .button{
+                        background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                    }
+                    </style>
                         <div class="container" style="text-align:center">
 
 
@@ -280,7 +304,7 @@ class Auth extends CI_Controller {
                         <h5 class="card-title">Special title treatment</h5>
                         <p class="card-text">untuk melanjutkan proses ini silahkan klik .</p>
                         <hr
-                        <a href='.$url.' class="btn btn-warning" target="_blank">NEXT</a>
+                        <a href='.$url.' class="button" target="_blank">NEXT</a>
                         <hr>
                         </div>
                         <div class="card-footer text-muted">
