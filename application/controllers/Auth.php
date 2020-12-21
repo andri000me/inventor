@@ -65,19 +65,7 @@ class Auth extends CI_Controller {
                     $url = site_url() . 'auth/complete/token/' . $qstring;
                     $link = '<a href="' . $url . '">' . $url . '</a>';
  
-                    $message = '<!doctype html>
-                    <html lang="en">
-                    <head>
-                    <!-- Required meta tags -->
-                    <meta charset="utf-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-                    <!-- Bootstrap CSS -->
-                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-                    <title>Hello, world!</title>
-                    </head>
-                    <body>
+                    $message = '
                     <div class="container" style="text-align:center">
 
 
@@ -88,26 +76,23 @@ class Auth extends CI_Controller {
                     </div>
                     <div class="card-body">
                     <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href='.$url.' class="btn btn-primary" target="_blank">NEXT</a>
+                    <p class="card-text">untuk melanjutkan proses pendaftaran silahkan klik.</p>
+                    <hr>
+                    <a href='.$url.' class="btn btn-warning" target="_blank">NEXT</a>
+                    <hr>
                     </div>
+                    &nbsp;
                     <div class="card-footer text-muted">
                     TERIMA KASIH
                     </div>
                     </div>
 
                     </div>
-                    <!-- Optional JavaScript -->
-                    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-                    </body>
-                    </html>';                    
+                   ';                    
                   //  $message .= '' . ;      
                    // echo $message; //send this in email
  
-          /*  $config = Array(  
+            $config = Array(  
                     'protocol' => 'smtp',  
                     'smtp_host' => 'ssl://smtp.googlemail.com',  
                     'smtp_port' => 465,  
@@ -132,8 +117,8 @@ class Auth extends CI_Controller {
                      
                      redirect(site_url().'masuk'); //redirect();
                     }  
-                    exit; */      
-                    echo $message;             
+                    exit;       
+                    //echo $message;             
                    
                 };              
             }
@@ -181,7 +166,8 @@ class Auth extends CI_Controller {
            // $insert = $this->Users_m->register("users", $data);
              $insert = $this->user_model->updateUserInfo($post);
             if($insert){
-                echo '<script>alert("Sukses! Anda berhasil melakukan register. Silahkan login untuk mengakses data.");window.location.href="'.base_url('index.php/auth/login').'";</script>';
+               $this->session->set_flashdata('flash_message', 'welcome');
+                redirect(site_url().'masuk');
                
             }
         }
@@ -281,56 +267,40 @@ class Auth extends CI_Controller {
                 $url = site_url() . 'auth/reset_password/token/' . $qstring;
                 $link = '<a href="' . $url . '">' . $url . '</a>';
                
-                $message = '<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                $message = '
+                        <div class="container" style="text-align:center">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-  <div class="container" style="text-align:center">
-  
-   
 
-    <div class="card text-center">
-  <div class="card-header">
-    Verifikasi
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href='.$url.' class="btn btn-primary" target="_blank">NEXT</a>
-  </div>
-  <div class="card-footer text-muted">
-    TERIMA KASIH
-  </div>
-</div>
+                        <div class="card text-center">
+                        <div class="card-header">
+                        Verifikasi
+                        </div>
+                        <div class="card-body">
+                        <h5 class="card-title">Special title treatment</h5>
+                        <p class="card-text">untuk melanjutkan proses ini silahkan klik .</p>
+                        <hr
+                        <a href='.$url.' class="btn btn-warning" target="_blank">NEXT</a>
+                        <hr>
+                        </div>
+                        <div class="card-footer text-muted">
+                        TERIMA KASIH
+                        </div>
+                        </div>
 
-</div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-</html>';                    
+                        </div>
+                        ';                    
                
                // $message .= ' ' . $link;            
  
                // echo $message; //send this through mail
  
-               /*    $config = Array(  
+                   $config = Array(  
                     'protocol' => 'smtp',  
-                    'smtp_host' => 'ssl://mail.bessproject.com',  
+                    'smtp_host' => 'ssl://smtp.googlemail.com',  
                     'smtp_port' => 465,  
-                    'smtp_user' => 'no_replay@bessproject.com',   //email google
-                    'smtp_pass' => 'OO,Jm^QeP)M_',   //passsword google
+                    'smtp_user' => 'semuake@gmail.com',   //email google
+                    'smtp_pass' => 'johansantri21',   //passsword google
                     'mailtype' => 'html',  
                     'charset' => 'iso-8859-1'  
                     );
@@ -338,7 +308,7 @@ class Auth extends CI_Controller {
                     $this->email->set_newline("\r\n");  
                     $this->email->from(($this->input->post('email',TRUE)), ($this->input->post('nama_pegawai',TRUE)));  
                     $this->email->to($this->input->post('email',TRUE));  
-                    $this->email->cc('kirimcek@gmail.com');   //sesuaikan
+                    $this->email->cc('johansantri@gmail.com');   //sesuaikan
                     $this->email->subject('reset your password');  
                     $this->email->message($message);  
                      if (!$this->email->send()) { 
@@ -350,8 +320,8 @@ class Auth extends CI_Controller {
                      
                      redirect(site_url().'masuk'); //redirect();
                     }  
-                    exit;                  */  
-                    echo $message;
+                    exit;                    
+                  //  echo $message;
                };
             
            
@@ -385,19 +355,7 @@ class Auth extends CI_Controller {
                 
             }else{
                                
-               // $this->load->library('password');                
-                /*$post = $this->input->post(NULL, TRUE);                
-                $cleanPost = $this->security->xss_clean($post);                
-                $hashed = $this->password->create_hash($cleanPost['password']);                
-                $cleanPost['password'] = $hashed;
-                $cleanPost['id_user'] = $user_info->id_user;
-                unset($cleanPost['passconf']);                
-                if(!$this->user_model->updatePassword($cleanPost)){
-                    $this->session->set_flashdata('flash_message', 'There was a problem updating your password');
-                }else{
-                    $this->session->set_flashdata('flash_message', 'Your password has been updated');
-                }
-                redirect(site_url().'masuk');  */ 
+               
                  $password = $this->input->post('password');
             $pass = password_hash($password, PASSWORD_DEFAULT);
             $cleanPost = [                
