@@ -92,7 +92,8 @@ public function __construct(){
 		if ($id) {
 			$data = array(
 					 	'catatan' 					=> $this->input->post('ecatatan',true),
-						'status_pengajuan' 				=> $this->input->post('status')
+						'status_pengajuan' 				=> $this->input->post('status'),
+						'jumlah_pengajuan' 				=> $this->input->post('jumlah_pengajuan')
 						
 						
 						

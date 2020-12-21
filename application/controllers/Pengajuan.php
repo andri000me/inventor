@@ -88,7 +88,7 @@ public function insert(){
 		
 	}
 
-
+        //admin
 		public function get_id($id=null){
 		
            
@@ -101,6 +101,7 @@ public function insert(){
       
      
 	}
+    //user
 	public function getid($id=null)
 	{
 		 $data = $this->Pengajuan_m->getId($id);
@@ -217,10 +218,10 @@ public function insert(){
                 }           
             }
 
-            echo json_encode($validator);
+            redirect(base_url().'pengajuan/');
         }
 		
-
+        
 
 		
 	}

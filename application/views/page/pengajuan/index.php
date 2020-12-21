@@ -196,6 +196,13 @@ update</a>  ';?>&nbsp; &nbsp;<small><?php echo $value['catatan'];?></small></td>
             <input type="text" name="ecatatan" id="ecatatan" placeholder="catatan" class="form-control" autocomplete="off">
 
             </div>
+
+             <div class="form-group">
+            <label> jumlah pengajuan</label>
+            <input type="number" name="jumlah_pengajuan" id="jumlah_pengajuan" placeholder="catatan" class="form-control" autocomplete="off">
+
+            </div>
+
           <div class="custom-control custom-checkbox mr-sm-2">
         <input type="checkbox" class="custom-control-input" id="status" name="status" >
         <label class="custom-control-label" for="status">cheklist jika anda setuju</label>

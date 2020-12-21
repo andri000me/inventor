@@ -14,7 +14,7 @@ function updatePengajuan(id = null) {
             dataType: 'json',
             success: function(response) {
                 $("#ecatatan").val(response.catatan);
-              
+                $("#jumlah_pengajuan").val(response.jumlah_pengajuan);
 
 
                 $("#updateForm").unbind('submit').bind('submit', function() {
@@ -36,7 +36,7 @@ function updatePengajuan(id = null) {
                                         $(".messages").empty();
                                     }, 3000);
                                     $("#updateModal").modal('toggle');
-                                   
+                                    location.reload();
 
                                 } else {
                                     $('.text-danger').remove()
