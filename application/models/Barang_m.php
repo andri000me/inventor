@@ -37,7 +37,7 @@ public function __construct(){
 	public function listAll(){
 			
 		$this->db->select('*');
-		$this->db->where('jumlah_barang>1');
+		$this->db->where('jumlah_barang>=1');
 		$this->db->from('tb_barang');
 		$this->db->join('tb_kategori','tb_barang.id_kategori=tb_kategori.id_kategori');
 		$query=$this->db->get();

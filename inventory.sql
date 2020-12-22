@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2020 at 03:35 AM
+-- Generation Time: Dec 22, 2020 at 04:27 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -49,7 +49,7 @@ INSERT INTO `tb_barang` (`id_barang`, `kode_barang`, `nama_barang`, `deskripsi_b
 (1, '123654', 'Monitor Asuz', 'Monitor Asuz 14 In', 1, 4, 5000000, '2020-12-16', 'baru', 'tidak', 3),
 (3, '123456', 'laptop Asuz Roq', 'laptop asuz warna merah, ram 3 GB, Hdd 1 TB. ukuran 14Ince', 1, 4, 5000000, '2020-12-16', 'baru', 'ya', 3),
 (4, 'Rx2004', 'Motor RX King Hitam', 'Motor RX King Hitam tahun 2020,  dengan nomor polisi B360K dan Nomor STNK bn34342323', 2, 2, 360000000, '2020-12-18', 'baru', 'tidak', 3),
-(5, 'TV0021', 'Tv xiomi 43 In', 'Spesifikasi tentang Xiaomi 43 in. Mi TV 4A 43', 1, 4, 2000000, '2020-12-18', 'baru', 'ya', 3),
+(5, 'TV0021', 'Tv xiomi 43 In', 'Spesifikasi tentang Xiaomi 43 in. Mi TV 4A 43', 1, 1, 2000000, '2020-12-18', 'baru', 'ya', 3),
 (6, 'EP23002', 'EPSON L360 i', 'EPSON L360 i  \r\n  Jenis : Printer Inkjet.\r\n    Printer Output : Color.\r\n    Colour Cartridge : T6642 (Cyan), T6643(Magenta), T6644(Yellow)\r\n    Black Cartridge : T6641(Black)\r\n    Print Speed Mono : 9.2 ipm.\r\n    Print Speed Color : 4.5 ipm.\r\n    Double-Sided Print : Manual.\r\n    Fungsi : Copy, Scan, Print.', 1, 0, 5300000, '2020-12-18', 'baru', 'ya', 3);
 
 -- --------------------------------------------------------
@@ -134,7 +134,7 @@ CREATE TABLE `tb_pengajuan` (
   `kode_pengajuan` varchar(200) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_barang` int(11) NOT NULL,
-  `jumlah_pengajuan` int(11) NOT NULL,
+  `jumlah_barang` int(11) NOT NULL,
   `deskripsi_pengajuan` text NOT NULL,
   `status_pengajuan` enum('on','','') NOT NULL,
   `tanggal_pengajuan` date NOT NULL,
@@ -147,9 +147,18 @@ CREATE TABLE `tb_pengajuan` (
 -- Dumping data for table `tb_pengajuan`
 --
 
-INSERT INTO `tb_pengajuan` (`id_pengajuan`, `kode_pengajuan`, `id_user`, `id_barang`, `jumlah_pengajuan`, `deskripsi_pengajuan`, `status_pengajuan`, `tanggal_pengajuan`, `update_at`, `catatan`, `id_devisi`) VALUES
-(17, '1608558895', 27, 5, 1, 'x', 'on', '2020-12-21', '2020-12-21', '-', 1),
-(18, '1608603485', 27, 4, 1, 'minta 1 unit motor untuk opraasional', 'on', '2020-12-22', '2020-12-22', 'ok', 2);
+INSERT INTO `tb_pengajuan` (`id_pengajuan`, `kode_pengajuan`, `id_user`, `id_barang`, `jumlah_barang`, `deskripsi_pengajuan`, `status_pengajuan`, `tanggal_pengajuan`, `update_at`, `catatan`, `id_devisi`) VALUES
+(19, '1608607115', 27, 5, 3, 'x', '', '2020-12-22', '2020-12-22', '', 2);
+
+--
+-- Triggers `tb_pengajuan`
+--
+DELIMITER $$
+CREATE TRIGGER `tb_barang_pengajuan` AFTER INSERT ON `tb_pengajuan` FOR EACH ROW BEGIN 
+UPDATE tb_barang SET jumlah_barang=jumlah_barang-NEW.jumlah_barang WHERE id_barang=NEW.id_barang;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -237,7 +246,7 @@ ALTER TABLE `tb_pegawai`
 -- AUTO_INCREMENT for table `tb_pengajuan`
 --
 ALTER TABLE `tb_pengajuan`
-  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

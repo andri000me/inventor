@@ -52,8 +52,8 @@
                    <div class="form-group row">
                 <label class="control-label col-md-3">jumlah barang</label>
                   <div class="col-md-2">
-                    <input class="form-control" type="number" name="jumlah_pengajuan" id="jumlah_pengajuan" value="<?php echo $news_item['jumlah_pengajuan']?>" placeholder="Enter full name">
-                    <small><?php echo form_error('jumlah_pengajuan'); ?></small>
+                    <input class="form-control" type="number" name="jumlah_barang" id="jumlah_barang" value="<?php echo $news_item['jumlah_barang']?>" placeholder="Enter full name">
+                    <small><?php echo form_error('jumlah_barang'); ?></small>
                   </div>
                 </div>
 

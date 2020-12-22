@@ -19,7 +19,7 @@ public function __construct(){
 					 	'id_pengajuan' 				=> $this->input->post('id_pengajuan',true),
 						'deskripsi_pengajuan' 		=> $this->input->post('deskripsi_pengajuan'),
 						'id_barang' 				=> $this->input->post('id_barang'),
-						'jumlah_pengajuan' 			=> $this->input->post('jumlah_pengajuan',true),
+						'jumlah_barang' 			=> $this->input->post('jumlah_barang',true),
 						'id_devisi'					=>	$this->session->userdata('id_devisi'),					
 						'tanggal_pengajuan' 		=> $date,
 						'status_pengajuan'			=>$uprove,
@@ -43,7 +43,7 @@ public function __construct(){
 		
 		$this->db->select('tb_pengajuan.id_pengajuan,
 							tb_pengajuan.kode_pengajuan,
-							tb_pengajuan.jumlah_pengajuan,
+							tb_pengajuan.jumlah_barang,
 							tb_pengajuan.deskripsi_pengajuan,
 							tb_pengajuan.status_pengajuan,
 							tb_pengajuan.tanggal_pengajuan,
@@ -67,7 +67,17 @@ public function __construct(){
 	
 		$id = $this->session->userdata['id_user']; 
 		$this->db->where('tb_pengajuan.id_user',$id);
-		$this->db->select('*');
+		$this->db->select('tb_pengajuan.id_pengajuan,
+							tb_pengajuan.kode_pengajuan,
+							tb_pengajuan.jumlah_barang,
+							tb_pengajuan.deskripsi_pengajuan,
+							tb_pengajuan.status_pengajuan,
+							tb_pengajuan.tanggal_pengajuan,
+							tb_pengajuan.catatan,
+							tb_pengajuan.id_user,
+							tb_pegawai.nama_pegawai,
+							tb_pengajuan.id_barang,
+							tb_barang.nama_barang');
 		$this->db->from('tb_pengajuan');
 		$this->db->join('tb_pegawai','tb_pengajuan.id_user=tb_pegawai.id_user');
 		$this->db->join('tb_barang','tb_pengajuan.id_barang=tb_barang.id_barang');
@@ -92,7 +102,7 @@ public function __construct(){
     				tb_pengajuan.catatan,
     				tb_barang.nama_barang,
     				tb_pengajuan.deskripsi_pengajuan,
-    				tb_pengajuan.jumlah_pengajuan');
+    				tb_pengajuan.jumlah_barang');
    $this->db->join('tb_pegawai','tb_pengajuan.id_user=tb_pegawai.id_user');
    $this->db->join('tb_barang','tb_pengajuan.id_barang=tb_barang.id_barang');
     $query = $this->db->get_where('tb_pengajuan', array('id_pengajuan' => $id));
@@ -105,7 +115,7 @@ public function __construct(){
 			$data = array(
 					 	'catatan' 					=> $this->input->post('ecatatan',true),
 						'status_pengajuan' 				=> $this->input->post('status'),
-						'jumlah_pengajuan' 				=> $this->input->post('jumlah_pengajuan')
+						'jumlah_barang' 				=> $this->input->post('jumlah_barang')
 						
 						
 						
@@ -129,7 +139,7 @@ public function __construct(){
 					 	
 						'deskripsi_pengajuan' 		=> $this->input->post('deskripsi_pengajuan'),
 						'id_barang' 				=> $this->input->post('id_barang'),
-						'jumlah_pengajuan' 			=> $this->input->post('jumlah_pengajuan',true),						
+						'jumlah_barang' 			=> $this->input->post('jumlah_barang',true),						
 						'update_at' 				=> $date,
 						'status_pengajuan'			=>$uprove,
 						'id_user'        			=> $this->session->userdata('id_user')

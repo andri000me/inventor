@@ -63,7 +63,7 @@
                    
                       <td><?php echo $value['nama_barang'];?></td>
                        <td><?php echo $value['nama_devisi'];?></td>
-                      <td><?php echo $value['jumlah_pengajuan'];?></td>
+                      <td><?php echo $value['jumlah_barang'];?></td>
                  
                       <td><?php echo $value['tanggal_pengajuan'];?></td>
                       <td class="text-danger"><?php echo $value['status_pengajuan']?'<span class="badge badge-pill badge-success">selesai </span> ':'<span class="badge badge-pill badge-warning">proses</span>   <a href="./pengajuan/get_id/'.$value['id_pengajuan'].'" >update</a>  ';?>&nbsp; &nbsp;<small><?php echo $value['catatan'];?></small></td>
@@ -152,7 +152,7 @@
                       <td><?php echo $no++?></td>
                        <td><?php echo $value['kode_pengajuan'];?></td>
                       <td><?php echo $value['nama_barang'];?></td>
-                      <td><?php echo $value['jumlah_pengajuan'];?></td>
+                      <td><?php echo $value['jumlah_barang'];?></td>
                  
                       <td><?php echo $value['tanggal_pengajuan'];?></td>
                       <td class="text-danger"><?php echo $value['status_pengajuan']?'<span class="badge badge-pill badge-success">selesai</span> ':'<span class="badge badge-pill badge-warning">proses</span>   <a href="'.base_url('pengajuan/getId/').''.$value['id_pengajuan'].'" ><i class="fa fa-link" aria-hidden="true"></i>
@@ -199,7 +199,7 @@ update</a>  ';?>&nbsp; &nbsp;<small><?php echo $value['catatan'];?></small></td>
 
              <div class="form-group">
             <label> jumlah pengajuan</label>
-            <input type="number" name="jumlah_pengajuan" id="jumlah_pengajuan" placeholder="catatan" class="form-control" autocomplete="off">
+            <input type="number" name="jumlah_barang" id="jumlah_barang" placeholder="catatan" class="form-control" autocomplete="off">
 
             </div>
 

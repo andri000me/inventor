@@ -58,7 +58,7 @@ public function insert(){
 			),
 			
 			array(
-				'field'		=> 'jumlah_pengajuan',
+				'field'		=> 'jumlah_barang',
 				'label'		=>'jumlah',
 				'rules'		=>'trim|required'
 			)
@@ -186,7 +186,7 @@ public function insert(){
             'rules' => 'trim|required'
             ),
              array(
-            'field' => 'jumlah_pengajuan',
+            'field' => 'jumlah_barang',
             'label' => 'jumlah ',
             'rules' => 'trim|required'
             )

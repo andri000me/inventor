@@ -53,8 +53,8 @@
                    <div class="form-group row">
                 <label class="control-label col-md-3">jumlah barang</label>
                   <div class="col-md-2">
-                    <input class="form-control" type="number" min="1" name="jumlah_pengajuan" id="jumlah_pengajuan" value="<?php echo set_value('jumlah_pengajuan')?>" placeholder="0">
-                    <small><?php echo form_error('jumlah_pengajuan'); ?></small>
+                    <input class="form-control" type="number" min="1" name="jumlah_barang" id="jumlah_barang" value="<?php echo set_value('jumlah_barang')?>" placeholder="0">
+                    <small><?php echo form_error('jumlah_barang'); ?></small>
                   </div>
                 </div>
 

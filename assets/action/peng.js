@@ -14,7 +14,7 @@ function updatePengajuan(id = null) {
             dataType: 'json',
             success: function(response) {
                 $("#ecatatan").val(response.catatan);
-                $("#jumlah_pengajuan").val(response.jumlah_pengajuan);
+                $("#jumlah_barang").val(response.jumlah_barang);
 
 
                 $("#updateForm").unbind('submit').bind('submit', function() {
