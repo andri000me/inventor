@@ -20,7 +20,7 @@ function __construct(){
 						'all'=>$all,   
       					'success'=>'');
            $this->load->view('setup/conect',$data);	
-		//var_dump($data);
+		//var_dump($all);
 		//exit();
 		}else{
 

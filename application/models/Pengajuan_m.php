@@ -19,7 +19,8 @@ public function __construct(){
 					 	'id_pengajuan' 				=> $this->input->post('id_pengajuan',true),
 						'deskripsi_pengajuan' 		=> $this->input->post('deskripsi_pengajuan'),
 						'id_barang' 				=> $this->input->post('id_barang'),
-						'jumlah_pengajuan' 			=> $this->input->post('jumlah_pengajuan',true),						
+						'jumlah_pengajuan' 			=> $this->input->post('jumlah_pengajuan',true),
+						'id_devisi'					=>	$this->session->userdata('id_devisi'),					
 						'tanggal_pengajuan' 		=> $date,
 						'status_pengajuan'			=>$uprove,
 						'kode_pengajuan'			=>$kode,
@@ -40,13 +41,24 @@ public function __construct(){
 	public function listAlls(){
 	
 		
-		$this->db->select('*');
-		$this->db->from('tb_pengajuan');
-		$this->db->join('tb_devisi','tb_pengajuan.id_user=tb_devisi.id_devisi');
+		$this->db->select('tb_pengajuan.id_pengajuan,
+							tb_pengajuan.kode_pengajuan,
+							tb_pengajuan.jumlah_pengajuan,
+							tb_pengajuan.deskripsi_pengajuan,
+							tb_pengajuan.status_pengajuan,
+							tb_pengajuan.tanggal_pengajuan,
+							tb_pengajuan.catatan,
+							tb_pengajuan.id_user,
+							tb_pegawai.nama_pegawai,
+							tb_pengajuan.id_barang,
+							tb_barang.nama_barang,
+							tb_devisi.nama_devisi');
+		//$this->db->from('tb_pengajuan');
+		$this->db->join('tb_devisi','tb_pengajuan.id_devisi=tb_devisi.id_devisi');
 		$this->db->join('tb_pegawai','tb_pengajuan.id_user=tb_pegawai.id_user');
 		$this->db->join('tb_barang','tb_pengajuan.id_barang=tb_barang.id_barang');
 		$this->db->order_by("tb_pengajuan.id_pengajuan", "asc");
-		$query=$this->db->get();
+		$query=$this->db->get('tb_pengajuan');
 		return $query->result_array();
 	}
 

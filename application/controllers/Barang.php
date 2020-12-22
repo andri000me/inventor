@@ -17,7 +17,7 @@ function __construct(){
 		 if ($this->session->userdata['level']==='super') {
 
 	
-				$all=$this->Barang_m->listAll();
+				$all=$this->Barang_m->listAlls();
 				$data = array( 'isi'=>'page/barang/index',
 				'all'=>$all,   
 				'success'=>'');

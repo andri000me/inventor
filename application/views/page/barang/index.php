@@ -59,7 +59,7 @@
                       <td><?php echo $value['kode_barang'];?></td>
                       <td><?php echo $value['nama_barang'];?></td>
                       <td><?php echo $value['nama_kategori'];?></td>
-                      <td><?php echo $value['jumlah_barang'];?></td>
+                      <td style="text-align: center;"><span class="text-danger"><?php echo $value['jumlah_barang'];?></span></td>
                       <td><?php echo $value['harga_beli'];?></td>
                       <td><?php echo $value['tanggal_beli'];?></td>
                       <td><?php echo $value['garansi'];?></td>

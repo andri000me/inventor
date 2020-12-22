@@ -91,7 +91,7 @@
         </div>
       </div>
     </main>
-   <?php }?>
+   <?php } else{?>
 <main class="app-content">
       <div class="app-title">
         <div>
@@ -155,7 +155,7 @@
                       <td><?php echo $value['jumlah_pengajuan'];?></td>
                  
                       <td><?php echo $value['tanggal_pengajuan'];?></td>
-                      <td class="text-danger"><?php echo $value['status_pengajuan']?'<span class="badge badge-pill badge-success">selesai</span> ':'<span class="badge badge-pill badge-warning">proses</span>   <a href="./pengajuan/getid/'.$value['id_pengajuan'].'" ><i class="fa fa-link" aria-hidden="true"></i>
+                      <td class="text-danger"><?php echo $value['status_pengajuan']?'<span class="badge badge-pill badge-success">selesai</span> ':'<span class="badge badge-pill badge-warning">proses</span>   <a href="'.base_url('pengajuan/getId/').''.$value['id_pengajuan'].'" ><i class="fa fa-link" aria-hidden="true"></i>
 update</a>  ';?>&nbsp; &nbsp;<small><?php echo $value['catatan'];?></small></td>
                  
                       
@@ -176,7 +176,7 @@ update</a>  ';?>&nbsp; &nbsp;<small><?php echo $value['catatan'];?></small></td>
       </div>
     </main>
 
-
+<?php };?>
 
 
   <!-- Modal update -->

@@ -41,19 +41,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
           <div class="login-form">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN UP</h3>
-           <div class="row">
-            <div class="col">
-               <label class="control-label">Nama Anda</label>
-              <input type="text" class="form-control" name="nama_pegawai" placeholder=" " required >
-            </div>
-           
-          </div>
           
-          <div class="form-group">
+      
+            
+              <input type="text" class="form-control" name="nama_pegawai" placeholder="nama " required >
             <br>
-             <label class="control-label">EMAIL</label>
-            <input class="form-control" type="Email" name="email" placeholder="" required="@">
-          </div>
+           
+      
+          
+     
+        
+         
+            <input class="form-control" type="Email" name="email" placeholder="@email" required="@">
+               <br>
+
+      
+         
+            <select class="form-control" name="id_devisi">
+
+                      <option value="">-devisi-</option>
+                      
+                     
+                       
+                      <?php foreach ($devisi as $key => $value) {?>
+                       
+                       <option value="<?php echo $value['id_devisi']?>"><?php echo $value['nama_devisi'];?></option>
+                       <?php } ?>
+                    </select>
+          
+
           <div class="form-group">
             <div class="utility">
               <div class="animated-checkbox">

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2020 at 07:27 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Generation Time: Dec 22, 2020 at 03:35 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,7 +50,7 @@ INSERT INTO `tb_barang` (`id_barang`, `kode_barang`, `nama_barang`, `deskripsi_b
 (3, '123456', 'laptop Asuz Roq', 'laptop asuz warna merah, ram 3 GB, Hdd 1 TB. ukuran 14Ince', 1, 4, 5000000, '2020-12-16', 'baru', 'ya', 3),
 (4, 'Rx2004', 'Motor RX King Hitam', 'Motor RX King Hitam tahun 2020,  dengan nomor polisi B360K dan Nomor STNK bn34342323', 2, 2, 360000000, '2020-12-18', 'baru', 'tidak', 3),
 (5, 'TV0021', 'Tv xiomi 43 In', 'Spesifikasi tentang Xiaomi 43 in. Mi TV 4A 43', 1, 4, 2000000, '2020-12-18', 'baru', 'ya', 3),
-(6, 'EP23002', 'EPSON L360 i', 'EPSON L360 i  \r\n  Jenis : Printer Inkjet.\r\n    Printer Output : Color.\r\n    Colour Cartridge : T6642 (Cyan), T6643(Magenta), T6644(Yellow)\r\n    Black Cartridge : T6641(Black)\r\n    Print Speed Mono : 9.2 ipm.\r\n    Print Speed Color : 4.5 ipm.\r\n    Double-Sided Print : Manual.\r\n    Fungsi : Copy, Scan, Print.', 1, 6, 5300000, '2020-12-18', 'baru', 'ya', 3);
+(6, 'EP23002', 'EPSON L360 i', 'EPSON L360 i  \r\n  Jenis : Printer Inkjet.\r\n    Printer Output : Color.\r\n    Colour Cartridge : T6642 (Cyan), T6643(Magenta), T6644(Yellow)\r\n    Black Cartridge : T6641(Black)\r\n    Print Speed Mono : 9.2 ipm.\r\n    Print Speed Color : 4.5 ipm.\r\n    Double-Sided Print : Manual.\r\n    Fungsi : Copy, Scan, Print.', 1, 0, 5300000, '2020-12-18', 'baru', 'ya', 3);
 
 -- --------------------------------------------------------
 
@@ -120,14 +120,8 @@ CREATE TABLE `tb_pegawai` (
 --
 
 INSERT INTO `tb_pegawai` (`id_user`, `npp`, `nama_pegawai`, `id_devisi`, `email`, `password`, `status`, `level`, `tgl_daftar`, `terakhir_masuk`) VALUES
-(1, '222251', 'Johan', 3, 'johan@admin.com', 'sha256:1000:NozycXw+v3WuovFNGVh+JbBcEJrTtQuW:PO8wAXV2fyOFlwKFYe3sIlt3I3P45Vrq', 'terima', 'member', '2020-12-21 04:45:22', '2020-12-20 22:45:22'),
-(2, '222201', 'Mr Josa', 2, 'member@gmail.com', 'sha256:1000:NozycXw+v3WuovFNGVh+JbBcEJrTtQuW:PO8wAXV2fyOFlwKFYe3sIlt3I3P45Vrq', 'terima', 'member', '2020-12-21 04:53:30', '2020-12-20 22:53:30'),
-(3, '222292921', 'admin', 2, 'admin@gmail.com', 'sha256:1000:NozycXw+v3WuovFNGVh+JbBcEJrTtQuW:PO8wAXV2fyOFlwKFYe3sIlt3I3P45Vrq', 'terima', 'super', '2020-12-21 04:55:48', '2020-12-20 22:55:48'),
-(4, '202020', 'jo', 3, '', '', 'terima', 'member', '2020-12-17 03:18:09', '2020-12-17 03:18:09'),
-(6, '123123', 'wqddasd', 3, '', '', 'terima', 'member', '2020-12-17 03:18:09', '2020-12-17 03:18:09'),
-(7, '43234', 'dasdasda', 4, '', '', 'terima', 'member', '2020-12-17 03:18:09', '2020-12-17 03:18:09'),
-(8, '234324', 'contoh', 1, '', '', 'terima', 'member', '2020-12-17 03:18:09', '2020-12-17 03:18:09'),
-(9, '423423', 'siapa ini', 5, '', '', 'terima', 'member', '2020-12-17 03:18:09', '2020-12-17 03:18:09');
+(26, '222201', 'johan santri', 1, 'johan@umitra.ac.id', '$2y$10$D/HaV5KFidNcfcl7.LXxn.2GCKsFZhKEsObpRSmy0wYOAeHovyf0u', 'terima', 'super', '2020-12-22 02:13:05', '2020-12-22 02:13:05'),
+(27, '222203', 'member', 2, 'member@gmail.com', '$2y$10$D/HaV5KFidNcfcl7.LXxn.2GCKsFZhKEsObpRSmy0wYOAeHovyf0u', 'terima', 'member', '2020-12-22 02:13:15', '2020-12-22 02:13:15');
 
 -- --------------------------------------------------------
 
@@ -145,16 +139,37 @@ CREATE TABLE `tb_pengajuan` (
   `status_pengajuan` enum('on','','') NOT NULL,
   `tanggal_pengajuan` date NOT NULL,
   `update_at` date DEFAULT current_timestamp(),
-  `catatan` varchar(200) NOT NULL
+  `catatan` varchar(200) NOT NULL,
+  `id_devisi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_pengajuan`
 --
 
-INSERT INTO `tb_pengajuan` (`id_pengajuan`, `kode_pengajuan`, `id_user`, `id_barang`, `jumlah_pengajuan`, `deskripsi_pengajuan`, `status_pengajuan`, `tanggal_pengajuan`, `update_at`, `catatan`) VALUES
-(13, '1608265061', 1, 5, 1, 'butuh monitor asus 14 ince', 'on', '2020-12-18', '2020-12-18', '-'),
-(14, '1608278050', 2, 1, 8, 'kami meminta 1 unit monitor 14 inc', 'on', '2020-12-18', '2020-12-21', 'jumlah dikurangi dari permohonan awal');
+INSERT INTO `tb_pengajuan` (`id_pengajuan`, `kode_pengajuan`, `id_user`, `id_barang`, `jumlah_pengajuan`, `deskripsi_pengajuan`, `status_pengajuan`, `tanggal_pengajuan`, `update_at`, `catatan`, `id_devisi`) VALUES
+(17, '1608558895', 27, 5, 1, 'x', 'on', '2020-12-21', '2020-12-21', '-', 1),
+(18, '1608603485', 27, 4, 1, 'minta 1 unit motor untuk opraasional', 'on', '2020-12-22', '2020-12-22', 'ok', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_tokens`
+--
+
+CREATE TABLE `tb_tokens` (
+  `id_token` int(11) NOT NULL,
+  `token` text NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_tokens`
+--
+
+INSERT INTO `tb_tokens` (`id_token`, `token`, `id_user`, `created`) VALUES
+(0, 'fa6fcb271f437a730df7e2b09e94cf', 26, '2020-12-20 17:00:00');
 
 --
 -- Indexes for dumped tables
@@ -216,13 +231,13 @@ ALTER TABLE `tb_kategori`
 -- AUTO_INCREMENT for table `tb_pegawai`
 --
 ALTER TABLE `tb_pegawai`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tb_pengajuan`
 --
 ALTER TABLE `tb_pengajuan`
-  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

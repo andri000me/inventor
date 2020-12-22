@@ -38,14 +38,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               echo $html;
           }
       ?>
-          <div class="form-group">
-            <label class="control-label">EMAIL</label>
-            <input class="form-control" type="Email" name="email" placeholder=" " autofocus required >
-          </div>
-          <div class="form-group">
-            <label class="control-label">PASSWORD</label>
-            <input class="form-control" type="password" name="password" placeholder=" " required >
-          </div>
+        
+            <input class="form-control" type="Email" name="email" placeholder="@email " autofocus required >
+       
+         
+          <br>
+            <input class="form-control" type="password" name="password" placeholder=" *** " required >
+  
           <div class="form-group">
             <div class="utility">
               <div class="animated-checkbox">
@@ -68,10 +67,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          <div class="forget-form">
        
         <h3 class="login-head"><i class="fa fa-lg fa-fw fa-lock"></i>lupa password ?</h3>
-          <div class="form-group">
-            <label class="control-label">EMAIL</label>
+         
             <input class="form-control" type="email" name="email" placeholder="Email" required >
-          </div>
+          
           <div class="form-group btn-container">
             <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-unlock fa-lg fa-fw"></i>RESET</button>
           </div>

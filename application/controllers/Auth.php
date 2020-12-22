@@ -9,7 +9,7 @@ class Auth extends CI_Controller {
         function __construct(){
             parent::__construct();
             $this->load->model('Users_m', 'user_model', TRUE);
-         
+            $this->load->model('Devisi_m', 'devisi_model', TRUE);
             $this->load->library('form_validation');    
             $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
             $this->status = $this->config->item('status');
@@ -43,13 +43,13 @@ class Auth extends CI_Controller {
         {
              
             $this->form_validation->set_rules('nama_pegawai', 'first name', 'required');
-               
+            $this->form_validation->set_rules('nama_devisi', 'devisi', 'required');  
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email');    
                        
             if ($this->form_validation->run() == FALSE) {  
                  
-               
-                $this->load->view('auth/register');
+               $data['devisi']=$this->devisi_model->listAll();
+                $this->load->view('auth/register',$data);
                 
                
             }else{                

@@ -33,10 +33,21 @@ public function __construct(){
 
 
 
-//select all data devisi
+//select all data user >0 devisi
 	public function listAll(){
 			
 		$this->db->select('*');
+		$this->db->where('jumlah_barang>1');
+		$this->db->from('tb_barang');
+		$this->db->join('tb_kategori','tb_barang.id_kategori=tb_kategori.id_kategori');
+		$query=$this->db->get();
+		return $query->result_array();
+	}
+	//all data
+	public function listAlls(){
+			
+		$this->db->select('*');
+		
 		$this->db->from('tb_barang');
 		$this->db->join('tb_kategori','tb_barang.id_kategori=tb_kategori.id_kategori');
 		$query=$this->db->get();

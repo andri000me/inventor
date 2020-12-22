@@ -16,6 +16,7 @@ class Users_m extends CI_Model {
             $string = array(
                 'nama_pegawai'=>$d['nama_pegawai'],               
                 'email'=>$d['email'],
+                   'id_devisi'=>$d['id_devisi'],
                 'level'=>$this->level[0],
                 'status'=>$this->status[0]
             );
