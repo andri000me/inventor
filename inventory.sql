@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2020 at 04:27 AM
+-- Generation Time: Dec 22, 2020 at 03:51 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.13
 
@@ -46,11 +46,11 @@ CREATE TABLE `tb_barang` (
 --
 
 INSERT INTO `tb_barang` (`id_barang`, `kode_barang`, `nama_barang`, `deskripsi_barang`, `id_kategori`, `jumlah_barang`, `harga_beli`, `tanggal_beli`, `status_barang`, `garansi`, `id_user`) VALUES
-(1, '123654', 'Monitor Asuz', 'Monitor Asuz 14 In', 1, 4, 5000000, '2020-12-16', 'baru', 'tidak', 3),
+(1, '123654', 'Monitor Asuz', 'Monitor Asuz 14 In', 1, 0, 5000000, '2020-12-16', 'baru', 'tidak', 3),
 (3, '123456', 'laptop Asuz Roq', 'laptop asuz warna merah, ram 3 GB, Hdd 1 TB. ukuran 14Ince', 1, 4, 5000000, '2020-12-16', 'baru', 'ya', 3),
-(4, 'Rx2004', 'Motor RX King Hitam', 'Motor RX King Hitam tahun 2020,  dengan nomor polisi B360K dan Nomor STNK bn34342323', 2, 2, 360000000, '2020-12-18', 'baru', 'tidak', 3),
+(4, 'Rx2004', 'Motor RX King Hitam', 'Motor RX King Hitam tahun 2020,  dengan nomor polisi B360K dan Nomor STNK bn34342323', 2, 1, 360000000, '2020-12-18', 'baru', 'tidak', 3),
 (5, 'TV0021', 'Tv xiomi 43 In', 'Spesifikasi tentang Xiaomi 43 in. Mi TV 4A 43', 1, 1, 2000000, '2020-12-18', 'baru', 'ya', 3),
-(6, 'EP23002', 'EPSON L360 i', 'EPSON L360 i  \r\n  Jenis : Printer Inkjet.\r\n    Printer Output : Color.\r\n    Colour Cartridge : T6642 (Cyan), T6643(Magenta), T6644(Yellow)\r\n    Black Cartridge : T6641(Black)\r\n    Print Speed Mono : 9.2 ipm.\r\n    Print Speed Color : 4.5 ipm.\r\n    Double-Sided Print : Manual.\r\n    Fungsi : Copy, Scan, Print.', 1, 0, 5300000, '2020-12-18', 'baru', 'ya', 3);
+(6, 'EP23002', 'EPSON L360 i', 'EPSON L360 i  \r\n  Jenis : Printer Inkjet.\r\n    Printer Output : Color.\r\n    Colour Cartridge : T6642 (Cyan), T6643(Magenta), T6644(Yellow)\r\n    Black Cartridge : T6641(Black)\r\n    Print Speed Mono : 9.2 ipm.\r\n    Print Speed Color : 4.5 ipm.\r\n    Double-Sided Print : Manual.\r\n    Fungsi : Copy, Scan, Print.', 1, 0, 5300000, '2020-12-18', 'baru', 'ya', 26);
 
 -- --------------------------------------------------------
 
@@ -121,7 +121,8 @@ CREATE TABLE `tb_pegawai` (
 
 INSERT INTO `tb_pegawai` (`id_user`, `npp`, `nama_pegawai`, `id_devisi`, `email`, `password`, `status`, `level`, `tgl_daftar`, `terakhir_masuk`) VALUES
 (26, '222201', 'johan santri', 1, 'johan@umitra.ac.id', '$2y$10$D/HaV5KFidNcfcl7.LXxn.2GCKsFZhKEsObpRSmy0wYOAeHovyf0u', 'terima', 'super', '2020-12-22 02:13:05', '2020-12-22 02:13:05'),
-(27, '222203', 'member', 2, 'member@gmail.com', '$2y$10$D/HaV5KFidNcfcl7.LXxn.2GCKsFZhKEsObpRSmy0wYOAeHovyf0u', 'terima', 'member', '2020-12-22 02:13:15', '2020-12-22 02:13:15');
+(27, '222203', 'member', 2, 'member@gmail.com', '$2y$10$D/HaV5KFidNcfcl7.LXxn.2GCKsFZhKEsObpRSmy0wYOAeHovyf0u', 'terima', 'member', '2020-12-22 02:13:15', '2020-12-22 02:13:15'),
+(28, '', 'pakai mata', 3, 'pakaimata@gmail.com', '$2y$10$LWUtpnYq6y3/C7JZ7e55ZOFBFVLWutFYAfwhrdmJJfkqmMtEUfEVC', 'terima', 'member', '2020-12-22 14:34:22', '2020-12-22 14:34:22');
 
 -- --------------------------------------------------------
 
@@ -148,13 +149,15 @@ CREATE TABLE `tb_pengajuan` (
 --
 
 INSERT INTO `tb_pengajuan` (`id_pengajuan`, `kode_pengajuan`, `id_user`, `id_barang`, `jumlah_barang`, `deskripsi_pengajuan`, `status_pengajuan`, `tanggal_pengajuan`, `update_at`, `catatan`, `id_devisi`) VALUES
-(19, '1608607115', 27, 5, 3, 'x', '', '2020-12-22', '2020-12-22', '', 2);
+(25, '1608612324', 27, 1, 1, 'monitor 2', '', '2020-12-22', '2020-12-22', 'x', 2),
+(26, '1608647343', 28, 4, 1, 'Pengajuan 1 unit kendaraan, untuk keperluan lapangan', 'on', '2020-12-22', '2020-12-22', 'okey, silahkan ambil', 3),
+(27, '1608647508', 28, 6, 3, 'pengajuan printer epson 3 unit', 'on', '2020-12-22', '2020-12-22', 'silahkan ambil', 3);
 
 --
 -- Triggers `tb_pengajuan`
 --
 DELIMITER $$
-CREATE TRIGGER `tb_barang_pengajuan` AFTER INSERT ON `tb_pengajuan` FOR EACH ROW BEGIN 
+CREATE TRIGGER `tb_pengurangan_barang` AFTER UPDATE ON `tb_pengajuan` FOR EACH ROW BEGIN 
 UPDATE tb_barang SET jumlah_barang=jumlah_barang-NEW.jumlah_barang WHERE id_barang=NEW.id_barang;
 END
 $$
@@ -178,7 +181,9 @@ CREATE TABLE `tb_tokens` (
 --
 
 INSERT INTO `tb_tokens` (`id_token`, `token`, `id_user`, `created`) VALUES
-(0, 'fa6fcb271f437a730df7e2b09e94cf', 26, '2020-12-20 17:00:00');
+(0, 'fa6fcb271f437a730df7e2b09e94cf', 26, '2020-12-20 17:00:00'),
+(0, 'b6a45d84c271b8a2f6d1de9dc6e9fa', 28, '2020-12-21 17:00:00'),
+(0, 'e16437d9ce8061f4253475fdd264fd', 28, '2020-12-21 17:00:00');
 
 --
 -- Indexes for dumped tables
@@ -240,13 +245,13 @@ ALTER TABLE `tb_kategori`
 -- AUTO_INCREMENT for table `tb_pegawai`
 --
 ALTER TABLE `tb_pegawai`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `tb_pengajuan`
 --
 ALTER TABLE `tb_pengajuan`
-  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

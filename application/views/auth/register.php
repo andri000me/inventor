@@ -42,20 +42,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="login-form">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN UP</h3>
           
-      
+        <div class="form-group">
             
               <input type="text" class="form-control" name="nama_pegawai" placeholder="nama " required >
             <br>
            
-      
-          
+      </div>
+       <div class="form-group">  
      
         
          
-            <input class="form-control" type="Email" name="email" placeholder="@email" required="@">
+            <input class="form-control" type="email" name="email" placeholder="@email" required="@">
                <br>
 
-      
+      </div> 
+      <div class="form-group">
          
             <select class="form-control" name="id_devisi">
 
@@ -69,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                        <?php } ?>
                     </select>
           
-
+          </div>
           <div class="form-group">
             <div class="utility">
               <div class="animated-checkbox">

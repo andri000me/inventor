@@ -2,7 +2,16 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
  
 class Auth extends CI_Controller {
-       
+       /**
+     * Index Page for this controller.
+     *
+     * youtube to the following URL
+     *     https://www.youtube.com/user/johansantri
+     *  - or -
+     *  fb   
+     *  https://www.facebook.com/johansantri/
+
+     */
         public $status;
         public $level;
    
@@ -22,18 +31,15 @@ class Auth extends CI_Controller {
             if(empty($this->session->userdata['email'])){
                 redirect(site_url().'masuk');
             }
-           
-            
+                      
            
             
             $data  = array('x' => 'Presensi Dosen',
                            
-                           'isi'=>'page/home' );
- 
+                           'isi'=>'page/home' ); 
    
       
-           $this->load->view('setup/conect',$data);
-         
+           $this->load->view('setup/conect',$data);         
           
                     
     }
@@ -43,7 +49,7 @@ class Auth extends CI_Controller {
         {
              
             $this->form_validation->set_rules('nama_pegawai', 'first name', 'required');
-            $this->form_validation->set_rules('nama_devisi', 'devisi', 'required');  
+            $this->form_validation->set_rules('id_devisi', 'devisi', 'required');  
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email');    
                        
             if ($this->form_validation->run() == FALSE) {  
@@ -106,8 +112,8 @@ class Auth extends CI_Controller {
                     'protocol' => 'smtp',  
                     'smtp_host' => 'ssl://smtp.googlemail.com',  
                     'smtp_port' => 465,  
-                    'smtp_user' => 'semuake@gmail.com',   //email google
-                    'smtp_pass' => 'johansantri21',   //passsword google
+                    'smtp_user' => '',   //email google
+                    'smtp_pass' => '',   //passsword google
                     'mailtype' => 'html',  
                     'charset' => 'iso-8859-1'  
                     );  
@@ -115,7 +121,7 @@ class Auth extends CI_Controller {
                     $this->email->set_newline("\r\n");  
                     $this->email->from(($this->input->post('email',TRUE)), ($this->input->post('nama_pegawai',TRUE)));  
                     $this->email->to($this->input->post('email',TRUE));  
-                    $this->email->cc('johansantri@gmail.com');   //email sesuaikan
+                    $this->email->cc('');   //cc
                     $this->email->subject('registration process');  
                     $this->email->message($message);  
                     if (!$this->email->send()) { 
@@ -291,7 +297,7 @@ class Auth extends CI_Controller {
                         <h5 class="card-title">Special title treatment</h5>
                         <p class="card-text">untuk melanjutkan proses ini silahkan klik .</p>
                         <hr
-                        <a href='.$url.' style=" background-color: #4CAF50;
+                         <a href='.$url.' style=" background-color: #4CAF50;
                 border: none;
                 color: white;
                 padding: 15px 32px;
@@ -319,8 +325,8 @@ class Auth extends CI_Controller {
                     'protocol' => 'smtp',  
                     'smtp_host' => 'ssl://smtp.googlemail.com',  
                     'smtp_port' => 465,  
-                    'smtp_user' => 'semuake@gmail.com',   //email google
-                    'smtp_pass' => 'johansantri21',   //passsword google
+                    'smtp_user' => '',   //email google
+                    'smtp_pass' => '',   //passsword google
                     'mailtype' => 'html',  
                     'charset' => 'iso-8859-1'  
                     );
@@ -328,7 +334,7 @@ class Auth extends CI_Controller {
                     $this->email->set_newline("\r\n");  
                     $this->email->from(($this->input->post('email',TRUE)), ($this->input->post('nama_pegawai',TRUE)));  
                     $this->email->to($this->input->post('email',TRUE));  
-                    $this->email->cc('johansantri@gmail.com');   //sesuaikan
+                    $this->email->cc('');   //cc
                     $this->email->subject('reset your password');  
                     $this->email->message($message);  
                      if (!$this->email->send()) { 
